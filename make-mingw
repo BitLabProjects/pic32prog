@@ -12,16 +12,16 @@ PROG_OBJS       = pic32prog.o target.o executive.o hid.o serial.o \
                   adapter-bitbang.o adapter-stk500v2.o adapter-uhb.o \
                   adapter-an1388-uart.o \
                   family-mx1.o family-mx3.o family-mz.o
-#PROG_OBJS      += adapter-mpsse.o
-#LIBS           += -Llibusb-win32/x86 -lusb0_x86
+PROG_OBJS      += adapter-mpsse.o
+LIBS           += -Llibusb-win32/x86 -lusb0_x86
 
 # Compiling Windows binary from Linux
-ifeq (/usr/bin/i586-mingw32msvc-gcc,$(wildcard /usr/bin/i586-mingw32msvc-gcc))
-    CC          = i586-mingw32msvc-gcc
-endif
-ifeq (/usr/bin/i686-w64-mingw32-gcc,$(wildcard /usr/bin/i686-w64-mingw32-gcc))
-    CC          = i686-w64-mingw32-gcc
-endif
+#ifeq (/usr/bin/i586-mingw32msvc-gcc,$(wildcard /usr/bin/i586-mingw32msvc-gcc))
+#    CC          = i586-mingw32msvc-gcc
+#endif
+#ifeq (/usr/bin/i686-w64-mingw32-gcc,$(wildcard /usr/bin/i686-w64-mingw32-gcc))
+#    CC          = i686-w64-mingw32-gcc
+#endif
 
 all:            pic32prog.exe
 

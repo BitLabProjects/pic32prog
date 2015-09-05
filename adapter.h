@@ -43,7 +43,8 @@ struct _adapter_t {
     void (*erase_chip) (adapter_t *a);
 };
 
-adapter_t *adapter_open_pickit (void);
+adapter_t *adapter_open_pickit_usb (void);
+adapter_t *adapter_open_pickit_serial (const char *port, int baud_rate);
 adapter_t *adapter_open_an1388 (void);
 adapter_t *adapter_open_hidboot (void);
 adapter_t *adapter_open_mpsse (void);

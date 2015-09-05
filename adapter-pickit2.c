@@ -12,6 +12,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
@@ -21,12 +22,15 @@
 #include "hidapi.h"
 #include "pickit2.h"
 #include "pic32.h"
+#include "serial.h"
 
 typedef struct {
     /* Common part */
     adapter_t adapter;
     int is_pk3;
     const char *name;
+
+    bool is_serial;
 
     /* Device handle for libusb. */
     hid_device *hiddev;
@@ -74,7 +78,18 @@ static void pickit_send_buf (pickit_adapter_t *a, unsigned char *buf, unsigned n
         }
         fprintf (stderr, "\n");
     }
-    hid_write (a->hiddev, buf, 64);
+    int sent_bytes;
+    if (a->is_serial) {
+        sent_bytes = serial_write(buf, 64);
+    } else {
+        hid_write (a->hiddev, buf, 64);
+        sent_bytes = 64;
+    }
+
+    if (sent_bytes != 64) {
+        fprintf (stderr, "%s: error sending packet\n", a->name);
+        exit (-1);
+    }
 }
 
 static void pickit_send (pickit_adapter_t *a, unsigned argc, ...)
@@ -93,10 +108,17 @@ static void pickit_send (pickit_adapter_t *a, unsigned argc, ...)
 
 static void pickit_recv (pickit_adapter_t *a)
 {
-    if (hid_read (a->hiddev, a->reply, 64) != 64) {
+    int read_bytes;
+    if (a->is_serial)
+        read_bytes = serial_read(a->reply, 64);
+    else 
+        read_bytes = hid_read (a->hiddev, a->reply, 64);
+
+    if (read_bytes != 64) {
         fprintf (stderr, "%s: error receiving packet\n", a->name);
         exit (-1);
     }
+
     if (debug_level > 1) {
         int k;
         fprintf (stderr, "--->>>>");
@@ -813,35 +835,44 @@ static void pickit_erase_chip (adapter_t *adapter)
     check_timeout (a, "chip erase");
 }
 
-/*
- * Initialize adapter PICkit2/PICkit3.
- * Return a pointer to a data structure, allocated dynamically.
- * When adapter not found, return 0.
- */
-adapter_t *adapter_open_pickit (void)
+adapter_t *adapter_open_pickit (bool use_serial, const char *port, int baud_rate)
 {
     pickit_adapter_t *a;
-    hid_device *hiddev;
-    int is_pk3 = 0;
 
-    hiddev = hid_open (MICROCHIP_VID, PICKIT2_PID, 0);
-    if (! hiddev) {
-        hiddev = hid_open (MICROCHIP_VID, PICKIT3_PID, 0);
-        if (! hiddev)
-            hiddev = hid_open (MICROCHIP_VID, CHIPKIT_PID, 0);
-        if (! hiddev) {
-            /*fprintf (stderr, "HID bootloader not found: vid=%04x, pid=%04x\n",
-                MICROCHIP_VID, BOOTLOADER_PID);*/
-            return 0;
-        }
-        is_pk3 = 1;
-    }
     a = calloc (1, sizeof (*a));
     if (! a) {
         fprintf (stderr, "Out of memory\n");
         return 0;
     }
-    a->hiddev = hiddev;
+
+    int is_pk3 = 0;
+    a->is_serial = use_serial;
+    if (!a->is_serial) {
+        hid_device *hiddev;
+        hiddev = hid_open (MICROCHIP_VID, PICKIT2_PID, 0);
+        if (! hiddev) {
+            hiddev = hid_open (MICROCHIP_VID, PICKIT3_PID, 0);
+            if (! hiddev)
+                hiddev = hid_open (MICROCHIP_VID, CHIPKIT_PID, 0);
+            if (! hiddev) {
+                /*fprintf (stderr, "HID bootloader not found: vid=%04x, pid=%04x\n",
+                    MICROCHIP_VID, BOOTLOADER_PID);*/
+                return 0;
+            }
+            is_pk3 = 1;
+        }
+        a->hiddev = hiddev;
+    } else {
+        if (serial_open (port, baud_rate, 100) < 0) {
+            fprintf (stderr, "Unable to configure serial port %s\n", port);
+            serial_close();
+            return 0;
+        }
+        //TODO Verify that the device implements the pickit serial protocol
+        is_pk3 = 0;
+    }
+
+
     a->is_pk3 = is_pk3;
     a->name = is_pk3 ? "PICkit3" : "PICkit2";
 
@@ -1014,4 +1045,20 @@ adapter_t *adapter_open_pickit (void)
     a->adapter.program_row = pickit_program_row;
     a->adapter.program_quad_word = pickit_program_quad_word;
     return &a->adapter;
+}
+
+/*
+ * Initialize adapter PICkit2/PICkit3.
+ * Return a pointer to a data structure, allocated dynamically.
+ * When adapter not found, return 0.
+ */
+adapter_t *adapter_open_pickit_usb (void)
+{
+    return adapter_open_pickit(false, NULL, 0);
+}
+
+/* Like the usb one, just use serial for data transfer */
+adapter_t *adapter_open_pickit_serial (const char *port, int baud_rate)
+{
+    return adapter_open_pickit(true, port, baud_rate);
 }

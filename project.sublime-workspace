@@ -1,0 +1,277 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/xed89/VirtualBox VMs/Linux/Logs/VBoxStartup.log",
+			"settings":
+			{
+				"buffer_size": 353769,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Dati/bitLab/Progetti/Pic32/pic32prog"
+	],
+	"file_history":
+	[
+		"/C/Dati/bitLab/Progetti/Pic32/Pic32Programmer/pickit2.c",
+		"/C/Dati/bitLab/Progetti/Pic32/pic32prog/pic32prog.c",
+		"/C/Dati/bitLab/Progetti/Pic32/pic32prog/adapter-pickit2.c",
+		"/C/Dati/bitLab/Progetti/Pic32/pic32prog/target.c",
+		"/C/Dati/bitLab/Progetti/Pic32/pic32prog/adapter.h",
+		"/C/Dati/bitLab/Progetti/Pic32/pickit2 FirmwareV2-32-00/FirmwareV2/user/pickit2.inc",
+		"/C/Dati/bitLab/Progetti/Pic32/pic32prog/adapter-stk500v2.c",
+		"/C/Dati/bitLab/Progetti/Pic32/pic32prog/adapter-bitbang.c",
+		"/C/Dati/bitLab/Progetti/Pic32/pickit2 FirmwareV2-32-00/FirmwareV2/system/usb/usb_compile_time_validation.h",
+		"/C/Dati/bitLab/Progetti/Pic32/pickit2 FirmwareV2-32-00/FirmwareV2/PICkit2Bootloader.mcp",
+		"/C/Dati/bitLab/Progetti/Pic32/pickit2 FirmwareV2-32-00/FirmwareV2/PICkit2Bootloader2.mcp",
+		"/C/Program Files (x86)/Microchip/xc8/v1.35/bin/xclm.exe",
+		"/C/Temp/args.txt",
+		"/C/Program Files (x86)/Microchip/xc8/v1.35/bin/roam.lic",
+		"/C/Dati/bitLab/Progetti/Pic32/Pic32Programmer/system.h",
+		"/C/Dati/bitLab/Progetti/Pic32/pic32prog/makefile",
+		"/C/Dati/bitLab/Progetti/Pic32/pic32prog/make-mingw",
+		"/C/Dati/bitLab/Progetti/Pic32/pic32prog/compile.bat",
+		"/C/Dati/bitLab/Progetti/Pic32/pic32prog/build.bat",
+		"/C/Dati/bitLab/Progetti/pic32prog/bitbang/ascii ICSP using arduino nano v1_1.pdf",
+		"/C/Dati/bitLab/Progetti/Pic32Programmer/serial.c",
+		"/C/Dati/bitLab/Progetti/Pic32Programmer/pic32programmer.c",
+		"/C/Dati/bitLab/Progetti/Pic32Programmer/main.c",
+		"/C/Dati/bitLab/Progetti/pic32prog/libserialport/serialport.c",
+		"/C/Dati/bitLab/Progetti/pic32prog/libserialport/libserialport.h",
+		"/C/Dati/bitLab/Progetti/SmartClock/appunti.txt",
+		"/C/Dati/bitLab/Progetti/LaserCat/lasercat-pic/main.c",
+		"/C/Dati/bitLab/Progetti/LaserCat/lasercat-pic/motor.c",
+		"/C/Temp/Pinguino_Project.inf"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"_serial",
+			"adapter_open_pickit",
+			"serial_tab",
+			"adapter_open_bitbang",
+			"adapter_open_pickit",
+			"PK2GoModeService",
+			"case",
+			"caseDOWNLOAD_SCRIPT",
+			"end_of",
+			"ScriptIdxIncJumpEnd",
+			"P32GetPEResponse",
+			"UARTModeService",
+			"mpsse",
+			"HIDSRC",
+			"hid",
+			"git",
+			"bitbang_send",
+			"ETAP_FASTDATA",
+			"adapter_open_bitbang",
+			"?",
+			"0",
+			"serial_open",
+			"usb",
+			"stk_adapter_t",
+			"serial_tab",
+			"adapter_open_stk500v2",
+			"serial_tab",
+			"stk500v2",
+			"serial_tab",
+			"open_serial_adapter",
+			"target_port",
+			"target_open",
+			"open_serial_adapter",
+			"serial_tab",
+			"adapter_open_bitbang",
+			"serial_tab",
+			"open_serial_adapter",
+			"pickit",
+			"list",
+			"enumer"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"case ",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/xed89/VirtualBox VMs/Linux/Logs/VBoxStartup.log",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 353769,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								353414,
+								353414
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 65296.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "project.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 212.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
